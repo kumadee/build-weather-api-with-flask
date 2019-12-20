@@ -1,0 +1,43 @@
+WeatherAPI (unittest.loader._FailedTest) ... ERROR
+tests (unittest.loader._FailedTest) ... ERROR
+
+======================================================================
+ERROR: WeatherAPI (unittest.loader._FailedTest)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: WeatherAPI
+Traceback (most recent call last):
+  File "/usr/lib/python3.5/unittest/loader.py", line 462, in _find_test_path
+    package = self._get_module_from_name(name)
+  File "/usr/lib/python3.5/unittest/loader.py", line 369, in _get_module_from_name
+    __import__(name)
+  File "/projects/challenge/WeatherAPI/__init__.py", line 5, in <module>
+    from WeatherAPI.weather_api import weather_bp
+  File "/projects/challenge/WeatherAPI/weather_api.py", line 24
+    def post(self):
+      ^
+IndentationError: expected an indented block
+
+
+======================================================================
+ERROR: tests (unittest.loader._FailedTest)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: tests
+Traceback (most recent call last):
+  File "/usr/lib/python3.5/unittest/loader.py", line 462, in _find_test_path
+    package = self._get_module_from_name(name)
+  File "/usr/lib/python3.5/unittest/loader.py", line 369, in _get_module_from_name
+    __import__(name)
+  File "/projects/challenge/tests/__init__.py", line 3, in <module>
+    from WeatherAPI import create_app
+  File "/projects/challenge/WeatherAPI/__init__.py", line 5, in <module>
+    from WeatherAPI.weather_api import weather_bp
+  File "/projects/challenge/WeatherAPI/weather_api.py", line 24
+    def post(self):
+      ^
+IndentationError: expected an indented block
+
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.001s
+
+FAILED (errors=2)

@@ -19,31 +19,36 @@ weatherapi = Api(weather_bp)
 class WeatherList(Resource):
 
     def get(self):
-        
+      pass
+
 
     def post(self):
-        
+      pass
+
 
 
 class WeatherErase(Resource):
 
     def delete(self):
-        
+      pass
 
 
 
-    
+
+
 class LocationTemp(Resource):
 
     def get(self):
-        
+      pass
 
-    
+
+
 class PreferredLocationsAPI(Resource):
-    
+
     def get(self):
-        
-        
+      pass
+
+
 weatherapi.add_resource(WeatherAPI, '/weather')
 weatherapi.add_resource(WeatherEraseAPI, '/erase')
 weatherapi.add_resource(TemperatureAPI, '/weather/temperature')
