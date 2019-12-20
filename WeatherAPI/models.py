@@ -32,13 +32,14 @@ class Location(db.Model):
     lon = db.Column(db.Float, nullable=False)
     city = db.Column(db.String(100), nullable=False)
     state = db.Column(db.String(100), nullable=False)
-    weathers = db.relationship('Weather', backref='Weather', lazy=True)
+    weathers = db.relationship('Weather', backref='location', lazy=True)
     
 
 class Weather(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     date = db.Column(db.DateTime, nullable=False)
     _temperature = db.Column(db.String(100), nullable=False)
+    location = db.Column(db.Integer, db.ForeignKey('location.id'), nullable=False)
 
     @property
     def temperature(self):
