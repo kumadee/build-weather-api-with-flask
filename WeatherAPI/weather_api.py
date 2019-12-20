@@ -6,10 +6,10 @@ from flask import Flask, request, Response, Blueprint
 
 from WeatherAPI.models import db, Location, Weather
 
-from flask_restful import Resource, Api, fields, marshal
+from flask_restful import Resource, Api, fields, marshal_with
 
 from WeatherAPI.parsers import WeatherRequestParser, WeatherGetParser, LocationParser, WeatherEraseParser, TemperatureGetParser, PreferredLocationsParser
-from WeatherAPI.marshallers import resource_fields, temp_fields, no_temp_fields, location_fields, preferred_location_details
+from WeatherAPI.marshallers import resource_fields, temp_fields, no_temp_fields, location_fields, preferred_location_fields
 
 weather_bp = Blueprint('WeatherAPI', __name__)
 
@@ -17,7 +17,7 @@ weatherapi = Api(weather_bp)
 
 
 class WeatherAPI(Resource):
-
+    @marshal_with(resource_fields)
     def get(self):
         pass
 
@@ -32,13 +32,13 @@ class WeatherEraseAPI(Resource):
 
 
 class TemperatureAPI(Resource):
-
+    @marshal_with(temp_fields)
     def get(self):
         pass
 
 
 class PreferredLocationsAPI(Resource):
-
+    @marshal_with(preferred_location_fields)
     def get(self):
         pass
 
