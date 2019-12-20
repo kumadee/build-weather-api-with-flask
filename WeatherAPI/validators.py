@@ -5,4 +5,7 @@ import datetime as dt
 # If the input string is in expected format, convert it into datetime object and return else
 # else raise Value Error 'A Date in format, "%Y-%m-%d", is expected. '
 def datestring(value):
-    pass
+    try:
+        dt.datetime.strptime(value, "%Y-%m-%d")
+    except ValueError as ex:
+        raise ex('A Date in format, "%Y-%m-%d", is expected. ')
