@@ -27,7 +27,23 @@ migrate = Migrate()
 # A weather object must able to access associated location details using 'location' attribute.
 
 class Location(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    lat = db.Column(db.Float, nullable=False)
+    lon = db.Column(db.Float, nullable=False)
+    city = db.Column(db.String(100), nullable=False)
+    state = db.Column(db.String(100), nullable=False)
+    weathers = db.relationship('Weather', backref='Weather', lazy=True)
     
 
 class Weather(db.Model):
-    
+    id = db.Column(db.Integer, primary_key=True)
+    date = db.Column(db.DateTime, nullable=False)
+    _temperature = db.Column(db.String(100), nullable=False)
+
+    @property
+    def temperature(self):
+         return list(map(lambda x: float(x), self._temperature.split(";")))
+
+    @temperature.setter
+    def temperature(self, value):
+         self._temperature = reduce(lambda x,y: str(x)+";"+str(y), value)
