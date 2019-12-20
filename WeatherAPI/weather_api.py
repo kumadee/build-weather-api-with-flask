@@ -16,41 +16,34 @@ weather_bp = Blueprint('WeatherAPI', __name__)
 weatherapi = Api(weather_bp)
 
 
-class WeatherList(Resource):
+class WeatherAPI(Resource):
 
     def get(self):
-      pass
-
+        pass
 
     def post(self):
-      pass
+        pass
 
 
-
-class WeatherErase(Resource):
+class WeatherEraseAPI(Resource):
 
     def delete(self):
-      pass
+        pass
 
 
-
-
-
-class LocationTemp(Resource):
+class TemperatureAPI(Resource):
 
     def get(self):
-      pass
-
+        pass
 
 
 class PreferredLocationsAPI(Resource):
 
     def get(self):
-      pass
+        pass
 
 
 weatherapi.add_resource(WeatherAPI, '/weather')
 weatherapi.add_resource(WeatherEraseAPI, '/erase')
 weatherapi.add_resource(TemperatureAPI, '/weather/temperature')
 weatherapi.add_resource(PreferredLocationsAPI, '/weather/locations')
-
