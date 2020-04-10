@@ -1,6 +1,7 @@
 import re
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
+from functools import reduce
 
 db = SQLAlchemy()
 migrate = Migrate()
@@ -48,3 +49,25 @@ class Weather(db.Model):
     @temperature.setter
     def temperature(self, value):
          self._temperature = reduce(lambda x,y: str(x)+";"+str(y), value)
+
+
+def transactional(f):
+    def handler(*args, **kwargs):
+        try:
+            f(*args, **kwargs)
+        except Exception as ex:
+            db.session.rollback()
+            raise ex
+        else:
+            return db.session.commit()
+    return handler
+
+
+@transactional
+def db_insert(model):
+    db.session.add(model)
+    
+
+@transactional
+def db_delete(model):
+    db.session.delete(model)
